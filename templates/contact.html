@@ -11,8 +11,6 @@
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
-  
-  <link rel="apple-touch-icon" sizes="180x180" href="/static/images/Code_bg.jpg">
   <!-- <link href="/static/images/Code_bg.jpg" rel="icon"> -->
 
   <title>Title page</title>  
@@ -59,19 +57,18 @@
           
           <div class="row">
             <div class="col-md-10 col-md-offset-1">
-               <form action="submit_form" method="post" class="reveal-content">
                   <div class="row">
-                    <div class="col-md-7">
+                    <div class="reveal-content">
                       <div class="form-group">
-                        <input name="email" type="email" class="form-control" id="email" placeholder="Email">
+                        <input id="email" type="email" class="form-control" placeholder="Your Email" required>
                       </div>
                       <div class="form-group">
-                        <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject">
+                        <input id="subject" type="text" class="form-control" placeholder="Subject" required>
                       </div>
                       <div class="form-group">
-                        <textarea name="message" class="form-control" rows="5" placeholder="Enter your message"></textarea>
+                        <textarea id="message" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
                       </div>
-                      <button type="submit" class="btn btn-default btn-lg">Send</button>
+                      <button onclick="openMailClient()" class="btn btn-default btn-lg">Send</button>
                     </div>
                     <div class="col-md-5 address-container">
                       <ul class="list-unstyled">
@@ -79,35 +76,28 @@
                           <span class="fa-icon">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                           </span>
-                          + 33 9 07 45 12 65
+                          +918610724880
                         </li>
                         <li>
                           <span class="fa-icon">
                             <i class="fa fa-at" aria-hidden="true"></i>
                           </span>
-                          e-mail@mail.io
+                          hariharan2760@gmail.com
                         </li>
-                        <li>
-                          <span class="fa-icon">
-                            <i class="fa fa fa-map-marker" aria-hidden="true"></i>
-                          </span>
-                          42 rue Moulbert 75016 Paris
-                        </li>
+                        
                       </ul>
-                      <h3>Follow me on social networks</h3>
-                      <a href="http://www.facebook.com" title="" class="fa-icon">
-                        <i class="fa fa-facebook"></i>
-                      </a>
-                      <a href="http://www.twitter.com" title="" class="fa-icon">
-                        <i class="fa fa-twitter"></i>
-                      </a>
-                      <a href="http://www.linkedin.com" title="" class="fa-icon">
+                      <h3>Social networks</h3>
+                      
+                      <a href="https://www.linkedin.com/in/hariharan04112004/" title="" class="fa-icon">
                         <i class="fa fa-linkedin"></i>
+                      </a>
+
+                      <a href="https://github.com/Hariiiieeeee" title="" class="fa-icon">
+                        <i class="fa fa-github"></i>
                       </a>
 
                     </div>
                   </div>
-                </form>
             </div>
 
           </div>
@@ -118,35 +108,32 @@
   </div>
 
 
-<footer class="footer-container text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <p>© UNTITLED | Website created with <a href="http://www.mashup-template.com/" title="Create website with free html template">Mashup Template</a>/<a href="https://www.unsplash.com/" title="Beautiful Free Images">Unsplash</a></p>
-      </div>
-    </div>
-  </div>
-</footer>
 
 <script>
   document.addEventListener("DOMContentLoaded", function (event) {
      navActivePage();
   });
+
+  function openMailClient() {
+    const userEmail = document.getElementById('email').value.trim();
+    const subject = encodeURIComponent(document.getElementById('subject').value.trim());
+    const message = encodeURIComponent(document.getElementById('message').value.trim());
+
+    if (!userEmail || !subject || !message) {
+      alert("Please fill out all fields.");
+      return false;
+    }
+
+    const body = `From: ${userEmail}%0A%0A${message}`;
+    const mailto = `mailto:hariharan2760@gmail.com?subject=${subject}&body=${body}`;
+
+    window.location.href = mailto;
+
+    return false; // prevent form from submitting
+  }
+
 </script>
 
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
-
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date(); a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-  ga('create', 'UA-XXXXX-X', 'auto');
-  ga('send', 'pageview');
-</script>
-
---> <script type="text/javascript" src="./static/main.70a66962.js"></script></body>
+<script type="text/javascript" src="./static/main.70a66962.js"></script></body>
 
 </html>
